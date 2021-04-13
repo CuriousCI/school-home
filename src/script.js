@@ -2,15 +2,15 @@ const sites = [
   {
     url: 'https://app.diagrams.net/',
     title: 'draw.io',
-    category: 'drawing'
+    category: 'design'
   }
 ];
 
-function displaySiteList(sites) {
-  $('#links').empty();
+function updateSiteList(list, sites) {
+  $(list).empty();
 
   sites.forEach(site => 
-    $('#links').append(
+    $(list).append(
       $('<li>').append(
         $('<a>')
           .attr('href', site.url)
@@ -21,15 +21,15 @@ function displaySiteList(sites) {
 
 };
 
-$(_ => {
+$(_ => 
   $('#form').submit(event => {
     event.preventDefault();
     sites.push({
       url: $('#url').val(),
       title: $('#title').val(),
-      category: $('#category').val(),
+      category: $('#category').val()
     });
 
-    displaySiteList(sites);
-  });
-});
+    updateSiteList('#links', sites);
+  })
+);
