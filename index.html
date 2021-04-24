@@ -4,19 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>favourite-links.it</title>
+
     <link href="src/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <h1>I miei siti preferiti</h1>
     <form id="form">
-      <input type="url" name="url" id="url" placeholder="url">
-      <input type="text" name="title" id="title" placeholder="titolo">
-      <input type="text" name="category" id="category" placeholder="categoria">
-      <input type="submit" value="aggiungi">
+      <input type="url" name="url" id="url" placeholder="url" required>
+      <input type="text" name="title" id="title" placeholder="titolo" required>
+      <select name="category" id="category">
+        <option value="arte">arte</option>
+        <option value="tecnologia">tecnologia</option>
+        <option value="sport">sport</option>
+        <option value="moda">moda</option>
+        <option value="istruzione">istruzione</option>
+      </select>
+      <input type="submit" value="Aggiungi">
     </form>
 
     <ol id="links">
-      <li><a href="https://app.diagrams.net/">draw.io</a></li>
     </ol>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-compat/3.0.0-alpha1/jquery.min.js"></script>
     <script src="src/script.js"></script>
