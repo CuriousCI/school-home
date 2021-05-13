@@ -4,14 +4,16 @@ h1 {
   font-family: 'Righteous', cursive;
 }
 
-#form {
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  align-items: center;
-  
-  width: fit-content;
-  height: 140px;
+body {
+  margin-left: 30px;
+}
 
+form {
+  display: grid;
+  align-items: center;
+
+  width: 200px;
+  
   padding: 10px;
   border-radius: 10px;
   border: 1px solid lightgray;
@@ -19,7 +21,17 @@ h1 {
   font-family: 'Righteous', cursive;
 }
 
-#form input, #form select{
+#creator {
+  grid-template-rows: repeat(4, 1fr);
+  height: 140px;
+  margin-bottom: 10px;
+}
+
+#filter {
+  grid-template-columns: 2fr 1fr;
+}
+
+input, select{
   font-family: inherit;
   padding: 5px;
 
@@ -27,16 +39,22 @@ h1 {
   border: inherit;
 }
 
-#form option {
+option {
   color: grey;
 }
 
-#form input:focus, #form select:focus {
+input:focus, select:focus {
   outline: none;
 }
 
-#form input[type=submit]{
-  place-self: end start;
+#creator input[type=submit]{
+  place-self: center start;
+  padding: 5px 13px;
+  text-decoration: underline;
+}
+
+#filter input[type=submit]{
+  place-self: end end;
   padding: 5px 13px;
   text-decoration: underline;
 }
@@ -44,8 +62,13 @@ h1 {
 .icon {
   width: 1em;
   float: right;
+  opacity: 0;
 }
 
 #links {
   width: 30vw; 
+}
+
+li:hover .icon {
+  opacity: 1;
 }

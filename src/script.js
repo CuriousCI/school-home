@@ -1,15 +1,24 @@
 let sites = [];
+let categories = ['tecnologia', 'arte', 'sport', 'moda', 'istruzione'];
+let category = 'none';
 
-function updateSiteList(listSelector, sites) {
-  $(listSelector).empty();
+function displayList(list, sites, category) {
+  list.empty();
 
-  sites.forEach(site => 
-    $(listSelector).append(
+  sites
+    .filter(site => 
+      site.category == category || category === 'none' // All
+    )
+    .map(site => 
       $('<li>')
         .append(
           $('<a>')
             .attr('href', site.url)
             .text(site.title)
+        )
+        .append(
+          $('<span>')
+            .text(`#${site.category}`)
         )
         .append(
           $('<img>')
@@ -19,13 +28,28 @@ function updateSiteList(listSelector, sites) {
             .addClass('icon')
         )
     )
-  );
-
+    .reduce((list, item) => list.append(item), list)
 };
 
+function addOptions(select, options){
+  options
+    .map(
+      category => 
+        $('<option>')
+          .attr('value', category)
+          .text(category)
+    )
+    .reduce(
+      (select, category) => select.append(category), 
+      select
+    )
+}
 
 $(_ => {
-  $('#form').submit(event => {
+  addOptions($('#category'), categories)
+  addOptions($('#filter-category'), ['none', ...categories])
+
+  $('#creator').submit(event => {
     event.preventDefault();
 
     sites.push({
@@ -35,17 +59,24 @@ $(_ => {
       category: $('#category').val()
     });
 
-    updateSiteList('#links', sites);
+    displayList($('#links'), sites, category);
 
-    $('#form').each(function() {
-      this.reset();
+    $('#creator').each(function() { 
+      this.reset(); 
     });
   })
 
   $('#links').on('click', '.icon', function() {
     const id = $(this).data('id');
     sites = sites.filter(site => site.id != id);
-    
-    updateSiteList('#links', sites);
+
+    displayList($('#links'), sites, category);
+  });
+
+  $('#filter').submit(event => {
+    event.preventDefault();
+    category = $("#filter-category").val();
+
+    displayList($('#links'), sites, category);
   });
 });

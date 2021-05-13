@@ -9,21 +9,19 @@
   </head>
   <body>
     <h1>I miei siti preferiti</h1>
-    <form id="form">
+    <form id="creator">
       <input type="url" name="url" id="url" placeholder="url" required>
       <input type="text" name="title" id="title" placeholder="titolo" required>
-      <select name="category" id="category">
-        <option value="arte">arte</option>
-        <option value="tecnologia">tecnologia</option>
-        <option value="sport">sport</option>
-        <option value="moda">moda</option>
-        <option value="istruzione">istruzione</option>
-      </select>
+      <select name="category" id="category"></select>
       <input type="submit" value="Aggiungi">
     </form>
 
-    <ol id="links">
-    </ol>
+    <form id="filter">
+      <select name="category" id="filter-category"></select>
+      <input type="submit" value="Filtra">
+    </form>
+
+    <ol id="links"></ol>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-compat/3.0.0-alpha1/jquery.min.js"></script>
     <script src="src/script.js"></script>
   </body>
